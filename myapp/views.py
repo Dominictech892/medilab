@@ -1,5 +1,5 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+from myapp.models import *
 # Create your views here.
 def starter(request):
     return render(request, 'starter-page.html')
@@ -17,7 +17,20 @@ def doctors(request):
     return render(request, 'doctors.html')
 
 def appointments(request):
-    return render(request, 'appointments.html')
+   if request.method == 'POST':
+       myappointments =  Appointment(
+           name=request.POST['name'],
+           email=request.POST['email'],
+           phone=request.POST['phone'],
+           datetime=request.POST['date'],
+           department=request.POST['department'],
+           doctor=request.POST['doctor'],
+           message=request.POST['message'],
+       )
+       myappointments.save()
+       return redirect('/appointment')
+   else:
+       return render(request, 'appointments.html')
 
 def departments(request):
     return render(request, 'departments.html')
