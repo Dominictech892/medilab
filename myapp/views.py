@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from myapp.models import *
+from django.contrib import messages
 # Create your views here.
 def starter(request):
     return render(request, 'starter-page.html')
@@ -16,6 +17,22 @@ def services(request):
 def doctors(request):
     return render(request, 'doctors.html')
 
+def contact(request):
+   if request.method == 'POST':
+       contacts =  Contact1(
+           name=request.POST['name'],
+           email=request.POST['email'],
+           subject=request.POST['subject'],
+           message=request.POST['message'],
+       )
+       contacts.save()
+       messages.success(request, 'Your message has been sent. Thank you!')
+       return redirect('/contact')
+   else:
+       messages.error(request, 'Please enter your message first.')
+       return render(request, 'contact.html')
+
+
 def appointments(request):
    if request.method == 'POST':
        myappointments =  Appointment(
@@ -28,10 +45,10 @@ def appointments(request):
            message=request.POST['message'],
        )
        myappointments.save()
+       messages.success(request, 'Your appointment has been submitted.')
        return redirect('/appointment')
    else:
+       messages.error(request, 'Please enter your appointment first.')
        return render(request, 'appointments.html')
-
 def departments(request):
     return render(request, 'departments.html')
-

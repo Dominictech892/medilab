@@ -2,6 +2,11 @@
 {% load static %}
 
 {% block content %}
+
+    {% for message in messages %}
+        <p class="alert alert-success">{{ message }}</p>
+    {% endfor %}
+
     <!-- Appointment Section -->
     <section id="appointment" class="appointment section">
 

@@ -19,8 +19,8 @@ class doctor(models.Model):
     age = models.IntegerField()
     department = models.CharField(max_length=20)
 
-def __str__(self):
-    return self.Fullname + " " + self.department
+    def __str__(self):
+       return self.Fullname + " " + self.department
 
 #ward model
 
@@ -30,8 +30,8 @@ class ward(models.Model):
     department = models.CharField(max_length=20)
     Head_nurse = models.CharField(max_length=20)
 
-def __str__(self):
-    return self.ward_name + " " + self.department
+    def __str__(self):
+       return self.ward_name + " " + self.department
 
 class Appointment(models.Model):
     name = models.CharField(max_length=100)
@@ -40,6 +40,15 @@ class Appointment(models.Model):
     datetime = models.DateTimeField()
     department = models.CharField(max_length=20)
     doctor = models.CharField(max_length=20)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+class Contact1(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    subject = models.CharField(max_length=100)
     message = models.TextField()
 
     def __str__(self):
