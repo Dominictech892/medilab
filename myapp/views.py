@@ -52,3 +52,17 @@ def appointments(request):
        return render(request, 'appointments.html')
 def departments(request):
     return render(request, 'departments.html')
+
+
+def show(request):
+    all = Appointment.objects.all()
+    return render(request, 'show.html', {'all': all})
+
+def delete(request,id):
+    myappoint=Appointment.objects.get(id=id)
+    myappoint.delete()
+    return redirect('/show')
+
+def showcontact(request):
+    all = Contact1.objects.all()
+    return render(request, 'showcontact.html', {'all': all})
