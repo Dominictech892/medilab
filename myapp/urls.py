@@ -6,7 +6,9 @@ from myapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('starter/', views.starter, name='starter'),
-    path('', views.home, name='index'),
+    path('home/', views.home, name='index'),
+    path('', views.register, name='register'),
+    path('login/', views.login_view, name='login'),
     path('about/', views.about, name='about'),
     path('services/', views.services, name='service'),
     path('doctors/', views.doctors, name='doctors'),
@@ -16,6 +18,7 @@ urlpatterns = [
     path('show/', views.show, name='show'),
     path('delete/<int:id>', views.delete,),
     path('showcontact/', views.showcontact, name='showcontact'),
+
 
 
 ]
