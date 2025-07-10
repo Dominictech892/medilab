@@ -27,7 +27,8 @@
           <td>{{ appointment.message }}</td>
            <td>
                <a href="" class="btn btn-outline-primary" >Edit</a>
-               <a href="/delete/{{ appointment.id }}" class="btn btn-outline-danger" >Delete</a>
+               <a href="/delete/{{ appointment.id }}" class="btn btn-outline-danger " >Delete</a>
+               <a href="{% url 'pay' %}" class="btn btn-outline-success" >pay</a>
 
            </td>
 
